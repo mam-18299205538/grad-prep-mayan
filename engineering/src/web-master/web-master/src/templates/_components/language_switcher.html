@@ -1,0 +1,46 @@
+{% load i18n %}
+
+<div class="dropdown dropdown-end">
+    <div tabindex="0" role="button" class="btn btn-ghost btn-sm">
+        <i class="fa-solid fa-globe"></i>
+        <span class="hidden md:inline">
+            {% get_current_language as LANGUAGE_CODE %}
+            {% if LANGUAGE_CODE == 'zh-hans' %}
+                简体中文
+            {% elif LANGUAGE_CODE == 'zh-hant' %}
+                繁體中文
+            {% elif LANGUAGE_CODE == 'en' %}
+                English
+            {% else %}
+                {% trans "Language" %}
+            {% endif %}
+        </span>
+        <i class="fa-solid fa-chevron-down text-xs"></i>
+    </div>
+    <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+        {% get_available_languages as languages %}
+        {% get_current_language as current_lang %}
+        {% for lang_code, lang_name in languages %}
+            <li>
+                <form method="post" action="{% url 'set_language' %}" class="w-full">
+                    {% csrf_token %}
+                    <input name="next" type="hidden" value="{{ request.get_full_path }}" />
+                    <input name="language" type="hidden" value="{{ lang_code }}" />
+                    <button type="submit" class="w-full text-left flex items-center justify-between {% if current_lang == lang_code %}active{% endif %}">
+                        <span>
+                            {% if lang_code == 'zh-hans' %}
+                                🇨🇳 简体中文
+                            {% elif lang_code == 'zh-hant' %}
+                                🇹🇼 繁體中文
+                            {% elif lang_code == 'en' %}
+                                🇺🇸 English
+                            {% else %}
+                                {{ lang_name }}
+                            {% endif %}
+                        </span>
+                    </button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

@@ -1,0 +1,195 @@
+{% extends "_base.html" %}
+{% load i18n %}
+{% load page_tags %}
+{% load static %}
+
+{% block title %}Demo Dashboard{% endblock %}
+
+{% block content %}
+    <div data-aos="fade-down">
+        {% page_header title breadcrumbs %}
+    </div>
+
+    <!-- Stats Overview -->
+    <div class="stats shadow w-full mb-8 bg-base-100 border border-base-200 grid-flow-row md:grid-flow-col" data-aos="fade-up">
+        {% for stat in stats %}
+        <div class="stat">
+            <div class="stat-figure text-{{ stat.color }} opacity-80">
+                <i class="{{ stat.icon }} text-3xl"></i>
+            </div>
+            <div class="stat-title">{{ stat.label }}</div>
+            <div class="stat-value text-{{ stat.color }}">{{ stat.value }}</div>
+            <div class="stat-desc text-success bg-success/10 px-2 py-0.5 rounded-full inline-block mt-1 font-bold">
+                {{ stat.change }}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Main Content Grid -->
+    <div class="grid lg:grid-cols-3 gap-8">
+        
+        <!-- Quick Actions / Demo Modules -->
+        <div class="lg:col-span-2 space-y-8">
+            <h2 class="text-xl font-bold flex items-center gap-2" data-aos="fade-right">
+                <i class="fa-solid fa-rocket text-primary"></i>
+                Explore Modules
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Movies Card -->
+                <a href="{% url 'demo:movies' %}" class="card bg-base-100 shadow-sm hover:shadow-xl transition-all duration-300 border border-base-200 hover:border-primary group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-body">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-content transition-colors">
+                                <i class="fa-solid fa-film text-2xl"></i>
+                            </div>
+                            <i class="fa-solid fa-arrow-right text-base-content/30 group-hover:text-primary transition-colors"></i>
+                        </div>
+                        <h3 class="card-title text-lg">Movie Catalog</h3>
+                        <p class="text-sm text-base-content/70">
+                            Grid layout with hover effects, image optimization, and rating badges.
+                        </p>
+                    </div>
+                </a>
+
+                <!-- Actors Card -->
+                <a href="{% url 'demo:actors' %}" class="card bg-base-100 shadow-sm hover:shadow-xl transition-all duration-300 border border-base-200 hover:border-secondary group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-body">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-secondary-content transition-colors">
+                                <i class="fa-solid fa-users text-2xl"></i>
+                            </div>
+                            <i class="fa-solid fa-arrow-right text-base-content/30 group-hover:text-secondary transition-colors"></i>
+                        </div>
+                        <h3 class="card-title text-lg">Actors Directory</h3>
+                        <p class="text-sm text-base-content/70">
+                            List views with avatars, status indicators, and micro-interactions.
+                        </p>
+                    </div>
+                </a>
+
+                <!-- Music Card -->
+                <a href="{% url 'demo:music' %}" class="card bg-base-100 shadow-sm hover:shadow-xl transition-all duration-300 border border-base-200 hover:border-accent group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-body">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-accent-content transition-colors">
+                                <i class="fa-solid fa-music text-2xl"></i>
+                            </div>
+                            <i class="fa-solid fa-arrow-right text-base-content/30 group-hover:text-accent transition-colors"></i>
+                        </div>
+                        <h3 class="card-title text-lg">Music Player</h3>
+                        <p class="text-sm text-base-content/70">
+                            Complex interface with playback controls and progress visualization.
+                        </p>
+                    </div>
+                </a>
+
+                <!-- Style Guide Card -->
+                <a href="{% url 'demo:styleguide' %}" class="card bg-neutral text-neutral-content shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card-body">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 rounded-lg bg-base-100/10 flex items-center justify-center backdrop-blur-sm">
+                                <i class="fa-solid fa-palette text-2xl"></i>
+                            </div>
+                            <i class="fa-solid fa-arrow-right opacity-50 group-hover:opacity-100 transition-colors"></i>
+                        </div>
+                        <h3 class="card-title text-lg">Style Guide</h3>
+                        <p class="text-sm opacity-80">
+                            Comprehensive design system documentation and component library.
+                        </p>
+                    </div>
+                </a>
+
+                <!-- HTMX Test Card -->
+                <a href="{% url 'demo:htmx_test' %}" class="card bg-base-100 shadow-sm hover:shadow-xl transition-all duration-300 border border-base-200 hover:border-info group" data-aos="fade-up" data-aos-delay="500">
+                    <div class="card-body">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 rounded-lg bg-info/10 flex items-center justify-center text-info group-hover:bg-info group-hover:text-info-content transition-colors">
+                                <i class="fa-solid fa-bolt text-2xl"></i>
+                            </div>
+                            <i class="fa-solid fa-arrow-right text-base-content/30 group-hover:text-info transition-colors"></i>
+                        </div>
+                        <h3 class="card-title text-lg">HTMX CSRF Test</h3>
+                        <p class="text-sm text-base-content/70">
+                            Test HTMX functionality and CSRF token protection mechanism.
+                        </p>
+                    </div>
+                </a>
+
+                <!-- SSE Chat Demo Card -->
+                <a href="{% url 'demo:sse_demo' %}" class="card bg-base-100 shadow-sm hover:shadow-xl transition-all duration-300 border border-base-200 hover:border-primary group" data-aos="fade-up" data-aos-delay="600">
+                    <div class="card-body">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-content transition-colors">
+                                <i class="fa-solid fa-comments text-2xl"></i>
+                            </div>
+                            <i class="fa-solid fa-arrow-right text-base-content/30 group-hover:text-primary transition-colors"></i>
+                        </div>
+                        <h3 class="card-title text-lg">SSE Chat Demo</h3>
+                        <p class="text-sm text-base-content/70">
+                            Real-time streaming chat interface using Server-Sent Events.
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Sidebar / Secondary Info -->
+        <div class="space-y-8">
+            <!-- System Status -->
+            <div class="card bg-base-100 shadow-sm border border-base-200" data-aos="fade-left">
+                <div class="card-body">
+                    <h3 class="card-title text-lg mb-4">System Status</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <span class="relative flex h-3 w-3 mr-3">
+                                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-success opacity-75"></span>
+                                  <span class="relative inline-flex rounded-full h-3 w-3 bg-success"></span>
+                                </span>
+                                <span class="text-sm">Database</span>
+                            </div>
+                            <div class="badge badge-success badge-sm badge-outline">Operational</div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <span class="h-3 w-3 rounded-full bg-success mr-3"></span>
+                                <span class="text-sm">Redis Cache</span>
+                            </div>
+                            <div class="badge badge-success badge-sm badge-outline">Operational</div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <span class="h-3 w-3 rounded-full bg-success mr-3"></span>
+                                <span class="text-sm">Celery Workers</span>
+                            </div>
+                            <div class="badge badge-success badge-sm badge-outline">Operational</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error Page Tests -->
+            <div class="card bg-base-200/50 border border-base-200" data-aos="fade-left" data-aos-delay="100">
+                <div class="card-body">
+                    <h3 class="card-title text-lg mb-4">Error Page Tests</h3>
+                    <div class="flex flex-col gap-2">
+                        <a href="{% url 'demo:test_403' %}" class="btn btn-ghost justify-between border border-base-300 bg-base-100 hover:border-warning group">
+                            <span>403 Forbidden</span>
+                            <i class="fa-solid fa-ban text-warning group-hover:scale-110 transition-transform"></i>
+                        </a>
+                        <a href="{% url 'demo:test_404' %}" class="btn btn-ghost justify-between border border-base-300 bg-base-100 hover:border-info group">
+                            <span>404 Not Found</span>
+                            <i class="fa-solid fa-magnifying-glass text-info group-hover:scale-110 transition-transform"></i>
+                        </a>
+                        <a href="{% url 'demo:test_500' %}" class="btn btn-ghost justify-between border border-base-300 bg-base-100 hover:border-error group">
+                            <span>500 Server Error</span>
+                            <i class="fa-solid fa-bomb text-error group-hover:scale-110 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

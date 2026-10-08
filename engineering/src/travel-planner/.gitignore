@@ -1,0 +1,17 @@
+# Backend runtime state
+backend/.venv/
+backend/.env
+backend/__pycache__/
+backend/**/*.pyc
+
+# Frontend runtime state
+frontend/node_modules/
+frontend/.npm-cache/
+frontend/dist/
+frontend/.env
+
+# Local versioned backup archives
+backups/
+
+# Upstream source snapshot used to bootstrap this project
+.hello-agents-source/

@@ -1,0 +1,41 @@
+{% extends base_template %}
+{% load page_tags %}
+
+{% block title %}开发者设置{% endblock %}
+
+{% block account_content %}
+<div class="fade-in-up">
+    {% page_header title breadcrumbs %}
+
+    <div class="card bg-base-100 shadow-sm border border-base-200">
+        <div class="card-body">
+            <h2 class="card-title">开发者 API 访问</h2>
+            <p class="text-sm opacity-70">生成或重置您的 API 访问令牌。</p>
+            
+            <div class="mt-4" id="developer-token-area">
+                <div class="alert alert-info shadow-sm mb-4">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <span>点击下方按钮验证身份并获取 API Token。</span>
+                </div>
+                
+                <form hx-post="{% url 'account:settings-developer-token' %}" 
+                      hx-target="#developer-token-result"
+                      class="flex gap-2 items-end">
+                    {% csrf_token %}
+                    <div class="form-control w-full max-w-xs">
+                        <label class="label">
+                            <span class="label-text">输入当前密码以验证</span>
+                        </label>
+                        <input type="password" name="password" placeholder="Password" class="input input-bordered w-full max-w-xs" required />
+                    </div>
+                    <button type="submit" class="btn btn-primary">生成 Token</button>
+                </form>
+
+                <div id="developer-token-result" class="mt-6">
+                    <!-- Token will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

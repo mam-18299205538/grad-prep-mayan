@@ -1,0 +1,73 @@
+{% extends base_template %}
+{% load page_tags %}
+
+{% block title %}启用双因素认证{% endblock %}
+
+{% block account_content %}
+<div class="fade-in-up">
+    {% page_header title breadcrumbs %}
+
+    <div class="card bg-base-100 shadow-sm border border-base-200 max-w-3xl mx-auto">
+        <div class="card-body">
+            <h2 class="card-title text-2xl mb-2">设置双因素认证 (2FA)</h2>
+            <p class="text-base-content/70 mb-6">使用 Google Authenticator 或其他兼容的应用扫描二维码。</p>
+            
+            {% if recovery_codes %}
+                <!-- Success State -->
+                <div class="alert alert-success mb-6">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <div>
+                        <h3 class="font-bold">2FA 已成功启用！</h3>
+                        <div class="text-sm">请保存以下恢复代码。如果丢失设备，您可以使用这些代码登录。</div>
+                    </div>
+                </div>
+
+                <div class="bg-base-200 p-4 rounded-box mb-6">
+                    <div class="grid grid-cols-2 gap-4 font-mono text-center">
+                        {% for code in recovery_codes %}
+                            <div class="bg-base-100 p-2 rounded border border-base-300">{{ code }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="card-actions justify-end">
+                    <a href="{% url 'account:settings' %}" 
+                       hx-get="{% url 'account:settings' %}"
+                       hx-target="#account-main" 
+                       hx-push-url="true"
+                       hx-swap="innerHTML transition:true"
+                       class="btn btn-primary">返回设置</a>
+                </div>
+
+            {% else %}
+                <!-- Setup State -->
+                <div class="flex flex-col md:flex-row gap-8 items-center mb-8">
+                    <div class="bg-white p-4 rounded-xl border border-base-300">
+                        <img src="{{ qr_data_uri }}" alt="QR Code" class="w-48 h-48" />
+                    </div>
+                    <div class="flex-1 space-y-4">
+                        <div>
+                            <div class="text-sm font-bold opacity-50 uppercase tracking-wide">密钥 (Secret Key)</div>
+                            <div class="font-mono text-lg bg-base-200 p-2 rounded mt-1 select-all">{{ secret }}</div>
+                        </div>
+                        <div class="text-sm opacity-70">
+                            如果无法扫描二维码，请在您的身份验证器应用中手动输入上述密钥。
+                        </div>
+                    </div>
+                </div>
+
+                <form method="post" class="max-w-md">
+                    {% csrf_token %}
+                    <div class="form-control mb-4">
+                        <label class="label">
+                            <span class="label-text font-bold">验证码</span>
+                        </label>
+                        <input type="text" name="token" placeholder="输入 6 位验证码" class="input input-bordered text-center text-xl tracking-widest" maxlength="6" pattern="[0-9]*" required />
+                    </div>
+                    <button type="submit" class="btn btn-primary w-full">验证并启用</button>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

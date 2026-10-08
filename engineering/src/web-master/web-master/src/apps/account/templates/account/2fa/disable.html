@@ -1,0 +1,45 @@
+{% extends base_template %}
+{% load page_tags %}
+
+{% block title %}关闭双因素认证{% endblock %}
+
+{% block account_content %}
+<div class="fade-in-up">
+    {% page_header title breadcrumbs %}
+
+    <div class="card bg-base-100 shadow-sm border border-base-200 max-w-xl mx-auto">
+        <div class="card-body">
+            <h2 class="card-title text-error mb-2">关闭双因素认证</h2>
+            <p class="text-base-content/70 mb-6">这将降低您的账户安全性。您确定要继续吗？</p>
+            
+            <form method="post" class="space-y-4">
+                {% csrf_token %}
+                
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text font-bold">当前密码</span>
+                    </label>
+                    <input type="password" name="password" class="input input-bordered" required />
+                </div>
+
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text font-bold">2FA 验证码</span>
+                    </label>
+                    <input type="text" name="token" placeholder="输入 6 位验证码" class="input input-bordered text-center tracking-widest" maxlength="6" pattern="[0-9]*" required />
+                </div>
+
+                <div class="card-actions justify-end mt-4">
+                    <a href="{% url 'account:settings' %}" 
+                       hx-get="{% url 'account:settings' %}"
+                       hx-target="#account-main" 
+                       hx-push-url="true"
+                       hx-swap="innerHTML transition:true"
+                       class="btn btn-ghost">取消</a>
+                    <button type="submit" class="btn btn-error">确认关闭</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

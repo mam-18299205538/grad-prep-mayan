@@ -1,0 +1,249 @@
+{% extends base_template %}
+{% load page_tags %}
+
+{% block title %}仪表盘{% endblock %}
+
+{% block account_content %}
+<div class="fade-in-up space-y-8">
+    {% page_header title breadcrumbs %}
+
+    <!-- Welcome Section -->
+    <div class="flex flex-col md:flex-row justify-between items-end gap-4">
+        <div>
+            <h2 class="text-2xl font-bold">欢迎回来, {{ user.username }}! 👋</h2>
+            <p class="text-base-content/70 mt-1">这里是您的账户概览与活动中心。</p>
+        </div>
+        <div class="flex gap-2">
+            <a href="{% url 'account:profile' %}" 
+               hx-get="{% url 'account:profile' %}" 
+               hx-target="#account-main" 
+               hx-push-url="true"
+               hx-swap="innerHTML transition:true"
+               class="btn btn-sm btn-outline">
+                <i class="fa-solid fa-user-pen"></i> 编辑资料
+            </a>
+            <a href="{% url 'account:settings' %}" 
+               hx-get="{% url 'account:settings' %}" 
+               hx-target="#account-main" 
+               hx-push-url="true"
+               hx-swap="innerHTML transition:true"
+               class="btn btn-sm btn-primary">
+                <i class="fa-solid fa-gear"></i> 账户设置
+            </a>
+        </div>
+    </div>
+
+    <!-- Stats Overview -->
+    <div class="stats shadow w-full bg-base-100 border border-base-200">
+        <div class="stat">
+            <div class="stat-figure text-primary">
+                <i class="fa-solid fa-laptop text-3xl opacity-20"></i>
+            </div>
+            <div class="stat-title">活跃会话</div>
+            <div class="stat-value text-primary">1</div>
+            <div class="stat-desc">当前在线设备</div>
+        </div>
+        
+        <div class="stat">
+            <div class="stat-figure text-secondary">
+                <i class="fa-solid fa-shield-halved text-3xl opacity-20"></i>
+            </div>
+            <div class="stat-title">安全评分</div>
+            <div class="stat-value text-secondary">85%</div>
+            <div class="stat-desc">建议开启 2FA 提升</div>
+        </div>
+        
+        <div class="stat">
+            <div class="stat-figure text-accent">
+                <i class="fa-solid fa-wallet text-3xl opacity-20"></i>
+            </div>
+            <div class="stat-title">账户余额</div>
+            <div class="stat-value text-accent">¥0.00</div>
+            <div class="stat-desc">本月支出 ¥0.00</div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Main Activity Column -->
+        <div class="lg:col-span-2 space-y-8">
+            <!-- Resource Usage / Chart Placeholder -->
+            <div class="card bg-base-100 shadow-sm border border-base-200">
+                <div class="card-body">
+                    <h3 class="card-title text-lg mb-4">
+                        <i class="fa-solid fa-chart-area text-primary"></i> 
+                        API 调用趋势
+                    </h3>
+                    <!-- Simple CSS Bar Chart -->
+                    <div class="flex items-end justify-between h-40 gap-2 mt-4">
+                        {% for i in "1234567"|make_list %}
+                        <div class="w-full bg-base-200 rounded-t-lg hover:bg-primary/20 transition-colors relative group" style="height: {{ forloop.counter }}0%;">
+                            <div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-base-300 text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                                {{ forloop.counter }}0 reqs
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="flex justify-between text-xs text-base-content/50 mt-2">
+                        <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity List -->
+            <div class="card bg-base-100 shadow-sm border border-base-200">
+                <div class="card-body p-0">
+                    <div class="p-4 border-b border-base-200 flex justify-between items-center">
+                        <h3 class="card-title text-lg">
+                            <i class="fa-solid fa-clock-rotate-left text-secondary"></i>
+                            近期活动
+                        </h3>
+                        <button class="btn btn-ghost btn-xs text-base-content/60">查看全部</button>
+                    </div>
+                    
+                    <ul class="menu w-full p-0">
+                        <!-- Login Activity -->
+                        <li class="hover:bg-base-200/50 transition-colors border-b border-base-200/50 last:border-0">
+                            <a class="flex gap-4 py-4 px-6 items-start active:!bg-transparent active:!text-base-content">
+                                <div class="avatar placeholder">
+                                    <div class="bg-success/10 text-success rounded-lg w-10 h-10 flex items-center justify-center">
+                                        <i class="fa-solid fa-arrow-right-to-bracket text-lg"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex justify-between items-center mb-1">
+                                        <span class="font-semibold text-sm">系统登录成功</span>
+                                        <span class="text-xs text-base-content/50">{{ user.last_login|date:"M d, H:i" }}</span>
+                                    </div>
+                                    <p class="text-xs text-base-content/70">
+                                        检测到新的登录会话 (IP: 127.0.0.1)
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+
+                        <!-- Profile Update -->
+                        <li class="hover:bg-base-200/50 transition-colors border-b border-base-200/50 last:border-0">
+                            <a class="flex gap-4 py-4 px-6 items-start active:!bg-transparent active:!text-base-content">
+                                <div class="avatar placeholder">
+                                    <div class="bg-primary/10 text-primary rounded-lg w-10 h-10 flex items-center justify-center">
+                                        <i class="fa-solid fa-user-pen text-lg"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex justify-between items-center mb-1">
+                                        <span class="font-semibold text-sm">更新个人资料</span>
+                                        <span class="text-xs text-base-content/50">{{ user.date_joined|date:"M d, H:i" }}</span>
+                                    </div>
+                                    <p class="text-xs text-base-content/70">
+                                        修改了头像和基本信息
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+
+                        <!-- Security Alert -->
+                        <li class="hover:bg-base-200/50 transition-colors border-b border-base-200/50 last:border-0">
+                            <a href="{% url 'account:settings' %}" 
+                               hx-get="{% url 'account:settings' %}" 
+                               hx-target="#account-main" 
+                               hx-push-url="true"
+                               hx-swap="innerHTML transition:true"
+                               class="flex gap-4 py-4 px-6 items-start active:!bg-transparent active:!text-base-content group">
+                                <div class="avatar placeholder">
+                                    <div class="bg-warning/10 text-warning rounded-lg w-10 h-10 flex items-center justify-center group-hover:bg-warning group-hover:text-warning-content transition-colors">
+                                        <i class="fa-solid fa-shield-halved text-lg"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex justify-between items-center mb-1">
+                                        <span class="font-semibold text-sm">安全建议</span>
+                                        <span class="badge badge-warning badge-xs">建议</span>
+                                    </div>
+                                    <p class="text-xs text-base-content/70">
+                                        您的账户尚未开启双因素认证 (2FA)，建议立即开启以提升安全性。
+                                    </p>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-xs opacity-0 group-hover:opacity-50 self-center transition-opacity"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar Column -->
+        <div class="space-y-8">
+            <!-- Security Status -->
+            <div class="card bg-base-100 shadow-sm border border-base-200">
+                <div class="card-body">
+                    <h3 class="card-title text-lg">账户安全</h3>
+                    <div class="py-4">
+                        <div class="flex justify-between text-sm mb-2">
+                            <span>安全强度</span>
+                            <span class="font-bold text-warning">中等</span>
+                        </div>
+                        <progress class="progress progress-warning w-full" value="60" max="100"></progress>
+                    </div>
+                    <ul class="menu bg-base-200/50 rounded-box text-sm">
+                        <li>
+                            <a class="flex justify-between">
+                                <span><i class="fa-solid fa-key w-5"></i> 密码强度</span>
+                                <span class="badge badge-success badge-xs">强</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'account:settings' %}" 
+                               hx-get="{% url 'account:settings' %}" 
+                               hx-target="#account-main" 
+                               hx-push-url="true"
+                               hx-swap="innerHTML transition:true"
+                               class="flex justify-between">
+                                <span><i class="fa-solid fa-mobile-screen w-5"></i> 2FA 认证</span>
+                                <span class="badge badge-warning badge-xs">未开启</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="card bg-base-100 shadow-sm border border-base-200">
+                <div class="card-body">
+                    <h3 class="card-title text-lg">快捷入口</h3>
+                    <div class="grid grid-cols-2 gap-2 mt-2">
+                        <a href="{% url 'account:settings-developer' %}" 
+                           hx-get="{% url 'account:settings-developer' %}" 
+                           hx-target="#account-main" 
+                           hx-push-url="true"
+                           hx-swap="innerHTML transition:true"
+                           class="btn btn-outline btn-sm h-auto py-3 flex flex-col gap-1">
+                            <i class="fa-solid fa-code text-lg"></i>
+                            <span class="text-xs font-normal">API Key</span>
+                        </a>
+                        <a href="{% url 'account:charge' %}" 
+                           hx-get="{% url 'account:charge' %}" 
+                           hx-target="#account-main" 
+                           hx-push-url="true"
+                           hx-swap="innerHTML transition:true"
+                           class="btn btn-outline btn-sm h-auto py-3 flex flex-col gap-1">
+                            <i class="fa-solid fa-file-invoice-dollar text-lg"></i>
+                            <span class="text-xs font-normal">账单</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Support -->
+            <div class="card bg-primary text-primary-content shadow-lg">
+                <div class="card-body">
+                    <h3 class="card-title text-lg"><i class="fa-solid fa-headset"></i> 需要帮助?</h3>
+                    <p class="text-sm opacity-90">遇到问题或有功能建议？请联系我们的支持团队。</p>
+                    <div class="card-actions justify-end mt-2">
+                        <button class="btn btn-sm btn-white text-primary">联系支持</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,9 @@
+﻿# 榛樿锛圡ock 妯″紡锛変緷璧栵細鏃犻渶 LLM銆侀珮寰锋垨 Unsplash 瀵嗛挜鍗冲彲杩愯瀹屾暣婕旂ず銆?fastapi>=0.115.0,<1.0.0
+uvicorn[standard]>=0.32.0,<1.0.0
+pydantic>=2.0.0,<3.0.0
+pydantic-settings>=2.0.0,<3.0.0
+python-dotenv>=1.0.0,<2.0.0
+requests>=2.31.0,<3.0.0
+python-dateutil>=2.8.2,<3.0.0
+
+# 鐪熷疄 HelloAgents + MCP 妯″紡璇烽澶栧畨瑁?requirements-live.txt銆?

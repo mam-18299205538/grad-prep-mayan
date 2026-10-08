@@ -1,0 +1,224 @@
+# HelloAgents 智能旅行助手
+
+> 交接状态：已完成可离线演示的全栈复现；真实 LLM、高德与图片服务的线上联调仍待完成。  
+> 最后更新：2026-10-07  
+> 参考来源：HelloAgents 教程第十三章「智能旅行助手」。
+
+## 1. 项目目标与当前结论
+
+本项目复现并增强了 HelloAgents 第十三章的旅行助手：用户输入城市、日期、交通方式、住宿偏好、旅行偏好与额外要求后，系统生成按天组织的旅行计划，并展示景点、酒店、餐饮、天气、预算与路线。
+
+当前交付采用**可直接运行的 Mock 模式**作为默认模式。它不依赖 LLM、高德、Unsplash 或任何 API Key，适合本地演示、前后端开发、接口联调和 UI 验收。Mock 数据不是实时旅行信息，不能直接作为实际出行依据。
+
+同时保留了 `live` 模式的配置与服务入口。下一位开发者补齐服务凭据并安装真实依赖后，可以继续接入 HelloAgents、多智能体规划、高德 MCP 和高德 JS 地图。
+
+## 2. 已实现工作
+
+### 2.1 后端：可运行的 API 与双模式架构
+
+- 使用 FastAPI 提供 HTTP API；入口为 `backend/app/api/main.py`。
+- 通过 `APP_MODE` 切换运行模式：
+  - `mock`：默认模式，无需外部密钥；
+  - `live`：启动时校验关键配置，按需延迟导入真实依赖，避免 Mock 模式因缺包而无法启动。
+- `backend/app/config.py` 统一读取环境变量，并提供模式判断和 Live 配置校验。
+- `backend/app/models/schemas.py` 补齐 Pydantic v2 请求/响应模型与日期、城市、坐标、预算校验。
+- `backend/app/services/planner_service.py` 作为规划服务门面：Mock 模式调用离线规划，Live 模式延迟加载原始智能体实现。
+- `backend/app/services/mock_travel_service.py` 提供北京、上海、成都的确定性演示数据，其他城市使用通用城市模板；能够生成每日景点、住宿、餐饮、天气、预算和建议。
+- `backend/app/services/amap_service.py` 在 Mock 模式返回可联调的 POI、天气和路线数据；在 Live 模式按配置调用高德 MCP。
+- `backend/app/services/unsplash_service.py` 在未配置图片 Key 时安全返回空结果，避免图片服务影响主行程生成。
+
+### 2.2 前端：可用的旅行规划与结果页
+
+- 前端使用 Vue 3、TypeScript、Vite 和 Ant Design Vue；入口位于 `frontend/src/`。
+- 首页 `frontend/src/views/Home.vue` 支持：城市、出发/结束日期、交通、住宿、偏好和额外要求输入，并发起 `/api/trip/plan` 请求。
+- 增加提交保护：防止加载中重复发起规划；空城市、空日期会在前端提示。
+- 结果页 `frontend/src/views/Result.vue` 支持：
+  - 行程概览、预算明细、每日景点、酒店、餐饮和天气展示；
+  - 编辑模式中的景点新增、编辑、排序、删除；保存后按当前景点、住宿与餐饮重算预算；
+  - 图片与 PDF 导出入口；
+  - 高德 JS Key 缺失时，显示按天、按景点顺序排列的离线路线示意图，而非报错或白屏；
+  - 图片接口基地址从 `VITE_API_BASE_URL` 读取，适配本地与部署环境。
+
+### 2.3 配置与文档
+
+- `backend/requirements.txt`：Mock 模式所需最小依赖。
+- `backend/requirements-live.txt`：Live 模式额外依赖（HelloAgents、FastMCP、uv、Hugging Face 相关包等）。
+- `backend/.env.example`：后端环境变量示例，默认 `APP_MODE=mock`。
+- `frontend/.env.example`：前端后端地址与高德 JS Key 示例。
+- 根目录 `.gitignore` 已忽略虚拟环境、`node_modules`、构建产物、本地环境文件、npm 缓存和上游源码快照。
+
+## 3. 项目结构与关键文件
+
+```text
+travel/
+├── backend/
+│   ├── app/
+│   │   ├── api/main.py                    # FastAPI 入口和健康检查
+│   │   ├── api/routes/trip.py             # 行程规划路由
+│   │   ├── api/routes/map.py              # POI、天气、路线接口
+│   │   ├── config.py                      # Mock/Live 配置
+│   │   ├── models/schemas.py              # 请求、响应、数据校验模型
+│   │   └── services/
+│   │       ├── planner_service.py         # 规划服务门面
+│   │       ├── mock_travel_service.py     # 离线演示数据与行程生成
+│   │       ├── amap_service.py            # 地图服务（Mock/Live）
+│   │       └── unsplash_service.py        # 图片服务降级
+│   ├── requirements.txt                   # 默认依赖
+│   ├── requirements-live.txt              # Live 额外依赖
+│   └── .env.example
+├── frontend/
+│   ├── src/views/Home.vue                 # 规划表单
+│   ├── src/views/Result.vue               # 行程结果与编辑
+│   ├── src/services/api.ts                # Axios API 客户端
+│   └── .env.example
+└── README.md
+```
+
+## 4. 已验证的结果
+
+验证均在本机 Mock 模式下完成。
+
+| 范围 | 操作 | 结果 |
+|---|---|---|
+| 后端启动 | `uvicorn app.api.main:app --host 127.0.0.1 --port 8000` | 成功启动，`GET /health` 返回 `healthy` 和 `mock` |
+| 行程接口 | 提交北京 2026-10-10 至 2026-10-12、公共交通、舒适型酒店 | `POST /api/trip/plan` 返回 200，成功生成 3 日行程，总预算 ¥2362 |
+| 地图接口 | 调用 POI、天气、路线接口 | 均返回 200 和 Mock 数据 |
+| 前端构建 | `npm run build` | 通过；仅有 Vite 对地图/导出依赖体积较大的提示 |
+| 浏览器端到端 | 填写北京 2026-10-03 至 2026-10-05、公共交通、经济型酒店 | 成功进入结果页，展示 3 日行程、预算 ¥1762、离线路线、天气与景点信息 |
+
+注：不同住宿偏好会影响预算，因此上述接口验证与浏览器验证的总预算不同，属于预期行为。
+
+## 5. 快速启动：Mock 演示模式
+
+### 前置条件
+
+- Python 3.10+（本次验证使用 Python 3.12）
+- Node.js 18+（本次验证使用 Node.js 20）
+- Windows PowerShell；其他平台请将虚拟环境激活命令换为对应格式。
+
+### 启动后端
+
+```powershell
+cd backend
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install --index-url https://pypi.org/simple -r requirements.txt
+.\.venv\Scripts\python.exe -m uvicorn app.api.main:app --host 127.0.0.1 --port 8000
+```
+
+后端文档地址：`http://127.0.0.1:8000/docs`。
+
+### 启动前端
+
+另开一个终端：
+
+```powershell
+cd frontend
+npm install --cache .npm-cache
+npm run dev -- --host 127.0.0.1
+```
+
+打开 `http://127.0.0.1:5173`。默认不需要创建 `.env`。
+
+### 进行一次演示
+
+1. 输入城市，例如“北京”。
+2. 选择开始与结束日期，例如 2026-10-03 至 2026-10-05。
+3. 选择交通、住宿和偏好后，点击“开始规划我的旅行”。
+4. 结果页会展示行程、预算、每日景点和天气；未配置高德 JS Key 时会展示离线路线示意图。
+
+## 6. 切换 Live 模式（尚未完成线上验证）
+
+### 安装额外依赖
+
+```powershell
+cd backend
+.\.venv\Scripts\python.exe -m pip install --index-url https://pypi.org/simple -r requirements-live.txt
+```
+
+### 配置后端环境变量
+
+复制 `backend/.env.example` 为 `backend/.env` 后填写：
+
+```dotenv
+APP_MODE=live
+LLM_MODEL_ID=your-model-name
+LLM_API_KEY=your-api-key
+LLM_BASE_URL=https://api.openai.com/v1
+AMAP_API_KEY=your-amap-web-service-key
+AMAP_MCP_COMMAND=uvx
+UNSPLASH_ACCESS_KEY=your-unsplash-access-key
+```
+
+如果未安装 `uvx`，可将 `AMAP_MCP_COMMAND` 改为 `npx`，但需确保相应 MCP 包和运行环境可用。
+
+### 配置前端地图
+
+创建 `frontend/.env`：
+
+```dotenv
+VITE_API_BASE_URL=http://127.0.0.1:8000
+VITE_AMAP_WEB_JS_KEY=your-amap-js-key
+```
+
+修改 `VITE_*` 环境变量后必须重启 Vite 开发服务器。请不要把真实 Key 提交到 Git。
+
+## 7. API 概览
+
+| 方法 | 地址 | 用途 | Mock 行为 |
+|---|---|---|---|
+| `GET` | `/health` | 返回服务状态和当前模式 | 返回 `healthy`、`mock` |
+| `POST` | `/api/trip/plan` | 创建多日旅行计划 | 生成确定性演示行程 |
+| `GET` | `/api/map/poi` | 搜索 POI | 返回内置景点 |
+| `GET` | `/api/map/weather` | 查询天气 | 返回演示天气 |
+| `POST` | `/api/map/route` | 查询路线 | 返回演示路线 |
+| `GET` | `/api/poi/photo` | 获取景点图片 | 未配 Key 时安全降级 |
+
+请求字段的准确结构以 `http://127.0.0.1:8000/docs` 为准；常用字段包括 `city`、`start_date`、`end_date`、`travel_days`、`transportation`、`accommodation`、`preferences` 与 `free_text_input`。
+
+## 8. 已知限制与未实现工作
+
+下列事项不是 Mock 模式可运行的阻塞项，但需要在进入真实产品化前完成。
+
+### P0：Live 模式可用性与真实数据
+
+- [ ] **完成 Live 模式端到端验收。** 当前仅实现了配置与延迟导入路径；尚未使用真实 LLM、HelloAgents 与高德 Key 执行一次完整行程生成。
+- [ ] **核验 HelloAgents 的最终包版本和接口兼容性。** 当前网络源对 `hello-agents` 安装不稳定，真实依赖被单独放在 `requirements-live.txt`，需要在可用 PyPI/私有源中锁定可复现版本。
+- [ ] **核验高德 MCP 的安装命令、工具名和返回结构。** `uvx` / `npx` 命令及 MCP 返回 JSON 需用真实账号和实际包版本验证。
+- [ ] **实现真实数据失败时的精细降级。** 目前 Mock 与 Live 是模式级切换；建议在 Live 单个工具失败时保留可追踪的降级信息，而不是让整个规划失败。
+- [ ] **接入实时可用性数据。** 景区开闭园、门票、预约、酒店价格、交通时刻、拥堵和天气数据均可能变化，不能仅依赖大模型输出。
+
+### P1：质量、测试与体验
+
+- [ ] **补充自动化测试。** 目前完成的是接口手工验证与浏览器端到端验证；尚未建立 `pytest` 单测、API 集成测试、前端组件测试或 Playwright E2E 测试。
+- [ ] **为 Mock 数据建立固定测试夹具。** 应覆盖跨天、超过最大天数、日期倒置、未知城市、空偏好、无图片与无地图 Key 等场景。
+- [ ] **优化前端构建体积。** `npm run build` 会提示地图与导出依赖包较大；可通过路由级懒加载、按需加载 `html2canvas` / `jspdf` 和拆分第三方包优化首屏。
+- [ ] **完成响应式与多浏览器验收。** 当前结果页已具备响应式样式，但未在手机、平板、主流浏览器上形成完整兼容性测试矩阵。
+- [ ] **验证图片/PDF 导出。** 导出入口保留在页面中，但本轮未对真实图片、长行程分页、中文字体、浏览器下载权限等导出细节做专项验收。
+- [ ] **增强编辑体验。** 当前保存时重算预算；可继续加入撤销/重做、恢复原计划、拖拽排序、冲突提示、时间线与路线重排。
+
+### P2：工程化与产品化
+
+- [ ] **增加持久化。** 当前计划存储在浏览器 `sessionStorage`，服务端无数据库；刷新策略、历史计划、多用户和共享链接均未实现。
+- [ ] **增加认证、鉴权、限流与审计。** 当前本地开发 API 无认证，不能直接暴露到公网。
+- [ ] **管理密钥与部署配置。** 建议使用部署平台 Secret、CI/CD 环境变量和密钥轮换，不将 `.env` 上传到仓库。
+- [ ] **增加可观测性。** 需要结构化日志、请求 ID、外部服务耗时、异常告警及成本统计，尤其是 Live LLM 调用。
+- [ ] **补齐生产部署。** 需要 Docker 镜像、反向代理、HTTPS、跨域白名单、健康探针、环境配置与发布说明。
+- [ ] **处理 FastAPI 参数声明的弃用提示。** 地图路由中的示例参数写法会在当前依赖组合下给出非阻断性弃用警告，后续可迁移至新版 `examples` 写法。
+
+## 9. 下一位开发者建议的接手顺序
+
+1. 先按第 5 节启动 Mock 模式，确认 `/health`、`/docs` 和前端页面均正常。
+2. 阅读 `config.py`、`planner_service.py`、`amap_service.py`，理解 Mock/Live 分流点。
+3. 为现有 Mock 行程接口写 API 集成测试，固定当前行为后再修改 Live 实现。
+4. 准备独立的测试账号和 Key，安装 `requirements-live.txt`，完成一次真实 LLM + 高德 MCP 行程生成。
+5. 根据真实工具返回结构修正解析逻辑，并给外部服务失败增加可观测的降级策略。
+6. 再推进持久化、认证、导出验收和生产部署。
+
+## 10. 开发注意事项
+
+- `APP_MODE=mock` 是默认且推荐的本地开发模式；没有明确的真实密钥时不要切换为 `live`。
+- Mock 预算、天气和景点仅用于流程测试。任何真实出行计划都应复核官方开放时间、预约限制、实时交通和价格。
+- 后端监听 `127.0.0.1` 是为了本机开发；部署前应重新评估监听地址、CORS 和反向代理。
+- 前端环境变量均以 `VITE_` 开头，修改后需要重启开发服务器。
+- 上游 HelloAgents 源码快照仅作追溯参考，不应成为运行时依赖；项目根目录 `.gitignore` 已忽略该目录。
+

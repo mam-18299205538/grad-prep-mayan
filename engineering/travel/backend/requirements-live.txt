@@ -1,0 +1,9 @@
+-r requirements.txt
+
+# 真实 LLM / MCP 模式的可选依赖。
+# 如果默认镜像未收录 hello-agents，可使用：
+# pip install --index-url https://pypi.org/simple -r requirements-live.txt
+hello-agents[protocols]>=0.2.4,<=0.2.9
+fastmcp>=2.0.0
+uv>=0.8.0
+huggingface_hub>=0.25.0
