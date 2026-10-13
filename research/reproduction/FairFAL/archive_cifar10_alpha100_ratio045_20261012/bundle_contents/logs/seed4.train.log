@@ -1,0 +1,311 @@
+Load Dataset cifar10_lt
+Files already downloaded and verified
+train Mode: Contain 17023 images
+Files already downloaded and verified
+train Mode: Contain 17023 images
+Files already downloaded and verified
+test Mode: Contain 10000 images
+total data num is  17023
+Dataset total num 17023
+Total dataset class num [5000, 3584, 2569, 1842, 1320, 946, 678, 486, 348, 250]
+per-client target [1703, 1703, 1703, 1702, 1702, 1702, 1702, 1702, 1702, 1702]
+Dataset total num 10000
+Total dataset class num [1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000]
+per-client target [1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000]
+[Current data ratio] 0.450
+Load Total Data Idxs from /root/autodl-tmp/results/fairfal_cifar10_lt_rho045_alpha100_full_ca14e07_20261012T152854/seed4/save/fedavg/dict_users_cifar10_lt0.05/cnn4conv_num10_C1.0_r100_le5_rquery0.050/dir_balance_100.0/seed4/reset_random/qmode_global/fairfal/dict_users_train_test_total.pkl
+Before Querying
+0 680
+1 680
+2 680
+3 680
+4 680
+5 680
+6 680
+7 680
+8 680
+9 680
+6800
+--------------------
+mean_global_ratio:  0.4472850263118744
+user_idx is  0
+count_label:  Counter({0: 139, 2: 121, 1: 93, 3: 88, 4: 65, 5: 57, 7: 41, 6: 38, 8: 27, 9: 11})
+count_unlabel:  Counter({0: 387, 1: 229, 2: 153, 3: 83, 4: 65, 5: 42, 6: 30, 7: 14, 9: 11, 8: 9})
+ratio:  0.710286058485508  distance:  0.13214285671710968
+count_query:  Counter({2: 17, 0: 16, 3: 13, 1: 11, 4: 10, 6: 5, 7: 4, 9: 4, 5: 3, 8: 2})
+fairfal 0
+(Before) Label examples: 680
+(After) Label examples: 765
+user_idx is  1
+count_label:  Counter({0: 139, 2: 114, 1: 103, 3: 97, 4: 56, 5: 55, 6: 40, 7: 35, 9: 23, 8: 18})
+count_unlabel:  Counter({0: 322, 1: 301, 2: 167, 3: 72, 5: 52, 4: 49, 6: 28, 7: 14, 8: 13, 9: 5})
+ratio:  0.7156527489423752  distance:  0.12140947580337524
+count_query:  Counter({2: 19, 0: 15, 1: 13, 5: 8, 6: 8, 3: 6, 7: 5, 8: 5, 4: 5, 9: 1})
+fairfal 1
+(Before) Label examples: 680
+(After) Label examples: 765
+user_idx is  2
+count_label:  Counter({0: 129, 3: 97, 2: 96, 1: 91, 4: 80, 5: 59, 6: 46, 7: 36, 8: 24, 9: 22})
+count_unlabel:  Counter({0: 384, 1: 263, 2: 145, 4: 75, 3: 74, 5: 28, 6: 25, 7: 13, 8: 11, 9: 5})
+ratio:  0.7293368093669415  distance:  0.0940413549542427
+count_query:  Counter({2: 16, 4: 13, 0: 12, 3: 10, 1: 10, 5: 7, 8: 6, 6: 5, 7: 5, 9: 1})
+fairfal 2
+(Before) Label examples: 680
+(After) Label examples: 765
+user_idx is  3
+count_label:  Counter({0: 123, 2: 121, 1: 114, 3: 102, 4: 55, 5: 53, 7: 40, 6: 29, 8: 24, 9: 19})
+count_unlabel:  Counter({0: 344, 1: 250, 2: 161, 3: 102, 4: 59, 5: 47, 6: 31, 8: 14, 7: 10, 9: 4})
+ratio:  0.7304630503058434  distance:  0.0917888730764389
+count_query:  Counter({0: 19, 1: 14, 3: 13, 2: 12, 4: 9, 6: 8, 5: 4, 7: 4, 8: 2})
+fairfal 3
+(Before) Label examples: 680
+(After) Label examples: 765
+user_idx is  4
+count_label:  Counter({0: 129, 2: 118, 1: 102, 3: 87, 5: 65, 4: 61, 6: 40, 7: 30, 8: 25, 9: 23})
+count_unlabel:  Counter({0: 358, 1: 293, 2: 139, 3: 85, 4: 47, 5: 43, 6: 31, 7: 14, 8: 9, 9: 3})
+ratio:  0.7336870655417442  distance:  0.08534084260463715
+count_query:  Counter({0: 16, 3: 14, 1: 14, 4: 9, 2: 8, 7: 7, 5: 7, 8: 6, 6: 4})
+fairfal 4
+(Before) Label examples: 680
+(After) Label examples: 765
+user_idx is  5
+count_label:  Counter({0: 131, 2: 115, 3: 103, 1: 86, 4: 73, 5: 56, 7: 41, 6: 36, 8: 21, 9: 18})
+count_unlabel:  Counter({0: 401, 1: 254, 2: 129, 3: 84, 4: 57, 5: 41, 6: 28, 8: 14, 7: 8, 9: 6})
+ratio:  0.7064245268702507  distance:  0.1398659199476242
+count_query:  Counter({3: 20, 0: 19, 1: 11, 2: 8, 5: 6, 6: 6, 7: 6, 4: 5, 8: 2, 9: 2})
+fairfal 5
+(Before) Label examples: 680
+(After) Label examples: 765
+user_idx is  6
+count_label:  Counter({0: 151, 2: 109, 1: 97, 3: 94, 4: 75, 5: 43, 6: 32, 7: 31, 8: 25, 9: 23})
+count_unlabel:  Counter({0: 331, 1: 305, 2: 139, 3: 84, 4: 58, 5: 42, 6: 33, 8: 13, 7: 13, 9: 4})
+ratio:  0.722187228500843  distance:  0.10834051668643951
+count_query:  Counter({0: 14, 3: 14, 1: 13, 2: 10, 4: 9, 5: 8, 7: 7, 8: 5, 6: 4, 9: 1})
+fairfal 6
+(Before) Label examples: 680
+(After) Label examples: 765
+user_idx is  7
+count_label:  Counter({0: 135, 3: 120, 1: 99, 2: 98, 4: 72, 5: 49, 7: 38, 6: 27, 8: 21, 9: 21})
+count_unlabel:  Counter({0: 356, 1: 251, 2: 148, 3: 100, 4: 73, 6: 38, 5: 37, 8: 11, 9: 5, 7: 3})
+ratio:  0.708433099091053  distance:  0.1358487755060196
+count_query:  Counter({0: 16, 2: 14, 4: 14, 3: 13, 1: 11, 5: 7, 6: 6, 8: 2, 9: 1, 7: 1})
+fairfal 7
+(Before) Label examples: 680
+(After) Label examples: 765
+user_idx is  8
+count_label:  Counter({0: 144, 2: 114, 1: 97, 3: 86, 4: 67, 5: 49, 6: 41, 7: 38, 8: 23, 9: 21})
+count_unlabel:  Counter({0: 375, 1: 215, 2: 153, 3: 93, 4: 72, 5: 50, 6: 37, 7: 15, 8: 8, 9: 4})
+ratio:  0.7294605784118176  distance:  0.09379381686449051
+count_query:  Counter({1: 15, 3: 14, 0: 14, 2: 12, 5: 10, 4: 6, 7: 6, 6: 5, 8: 2, 9: 1})
+fairfal 8
+(Before) Label examples: 680
+(After) Label examples: 765
+user_idx is  9
+count_label:  Counter({0: 130, 3: 107, 4: 92, 1: 90, 2: 89, 5: 54, 7: 38, 6: 34, 8: 27, 9: 19})
+count_unlabel:  Counter({0: 392, 1: 251, 2: 140, 3: 84, 4: 69, 6: 34, 5: 24, 7: 14, 8: 11, 9: 3})
+ratio:  0.7380392700433731  distance:  0.0766364336013794
+count_query:  Counter({0: 18, 1: 14, 3: 13, 4: 11, 2: 10, 6: 7, 7: 6, 5: 3, 8: 2, 9: 1})
+fairfal 9
+(Before) Label examples: 680
+(After) Label examples: 765
+Querying instances takes 0:00:18.089020
+Round 1, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [1 0 9 3 5 4 8 6 7 2]
+Round   1, Average loss 1.527, Test loss 0.035, Test accuracy: 23.51
+Round 2, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [0 3 9 5 1 2 6 7 8 4]
+Round   2, Average loss 1.128, Test loss 0.024, Test accuracy: 44.56
+Round 3, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [7 4 8 2 6 5 3 0 1 9]
+Round   3, Average loss 0.913, Test loss 0.021, Test accuracy: 51.12
+Round 4, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [6 5 7 2 3 0 8 9 1 4]
+Round   4, Average loss 0.757, Test loss 0.020, Test accuracy: 55.10
+Round 5, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [8 9 2 5 7 1 3 6 4 0]
+Round   5, Average loss 0.652, Test loss 0.019, Test accuracy: 56.85
+Round 6, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [7 2 6 0 9 5 3 4 1 8]
+Round   6, Average loss 0.561, Test loss 0.019, Test accuracy: 58.93
+Round 7, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [4 0 2 8 5 9 6 7 3 1]
+Round   7, Average loss 0.513, Test loss 0.018, Test accuracy: 60.65
+Round 8, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [2 5 4 0 6 7 3 1 9 8]
+Round   8, Average loss 0.426, Test loss 0.018, Test accuracy: 61.73
+Round 9, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [4 3 6 8 5 2 1 7 9 0]
+Round   9, Average loss 0.386, Test loss 0.018, Test accuracy: 61.64
+Round 10, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [0 4 9 8 5 6 2 3 1 7]
+Round  10, Average loss 0.363, Test loss 0.018, Test accuracy: 62.37
+Round 11, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [8 3 0 6 1 5 4 9 2 7]
+Round  11, Average loss 0.321, Test loss 0.018, Test accuracy: 62.93
+Round 12, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [1 0 6 9 8 4 3 7 5 2]
+Round  12, Average loss 0.298, Test loss 0.018, Test accuracy: 63.42
+Round 13, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [5 8 4 7 2 6 3 0 9 1]
+Round  13, Average loss 0.264, Test loss 0.018, Test accuracy: 64.41
+Round 14, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [3 0 2 8 5 4 9 6 7 1]
+Round  14, Average loss 0.245, Test loss 0.019, Test accuracy: 63.08
+Round 15, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [2 5 4 1 8 0 7 3 9 6]
+Round  15, Average loss 0.214, Test loss 0.019, Test accuracy: 64.28
+Round 16, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [3 9 6 2 8 4 0 7 1 5]
+Round  16, Average loss 0.202, Test loss 0.018, Test accuracy: 64.80
+Round 17, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [2 4 5 3 6 0 9 8 1 7]
+Round  17, Average loss 0.198, Test loss 0.018, Test accuracy: 65.42
+Round 18, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [6 5 1 7 2 4 9 3 8 0]
+Round  18, Average loss 0.162, Test loss 0.019, Test accuracy: 64.75
+Round 19, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [3 8 1 6 4 2 0 5 9 7]
+Round  19, Average loss 0.161, Test loss 0.019, Test accuracy: 65.39
+Round 20, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [1 2 4 0 5 9 6 8 3 7]
+Round  20, Average loss 0.143, Test loss 0.020, Test accuracy: 63.86
+Round 21, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [6 7 0 4 8 9 2 5 1 3]
+Round  21, Average loss 0.130, Test loss 0.019, Test accuracy: 64.77
+Round 22, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [0 8 9 6 4 5 3 2 1 7]
+Round  22, Average loss 0.119, Test loss 0.020, Test accuracy: 65.03
+Round 23, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [8 7 3 4 2 1 9 0 6 5]
+Round  23, Average loss 0.101, Test loss 0.020, Test accuracy: 65.31
+Round 24, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [2 3 7 5 9 0 4 8 1 6]
+Round  24, Average loss 0.091, Test loss 0.020, Test accuracy: 65.58
+Round 25, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [2 3 7 6 5 8 9 0 4 1]
+Round  25, Average loss 0.085, Test loss 0.020, Test accuracy: 65.76
+Round 26, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [6 3 1 8 5 4 2 0 9 7]
+Round  26, Average loss 0.078, Test loss 0.022, Test accuracy: 63.85
+Round 27, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [3 6 5 9 2 0 7 4 1 8]
+Round  27, Average loss 0.064, Test loss 0.021, Test accuracy: 64.92
+Round 28, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [9 2 0 5 4 6 1 3 8 7]
+Round  28, Average loss 0.053, Test loss 0.021, Test accuracy: 65.05
+Round 29, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [0 3 6 9 4 5 7 2 1 8]
+Round  29, Average loss 0.051, Test loss 0.021, Test accuracy: 65.64
+Round 30, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [8 2 6 9 3 5 0 7 1 4]
+Round  30, Average loss 0.042, Test loss 0.021, Test accuracy: 65.76
+Round 31, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [9 5 6 0 7 4 8 3 2 1]
+Round  31, Average loss 0.041, Test loss 0.022, Test accuracy: 64.66
+Round 32, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [0 9 2 8 4 1 3 5 6 7]
+Round  32, Average loss 0.031, Test loss 0.023, Test accuracy: 64.46
+Round 33, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [4 3 0 8 7 6 9 1 5 2]
+Round  33, Average loss 0.027, Test loss 0.023, Test accuracy: 64.94
+Round 34, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [9 3 2 1 5 0 7 6 8 4]
+Round  34, Average loss 0.024, Test loss 0.023, Test accuracy: 64.87
+Round 35, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [4 9 1 8 5 2 7 6 3 0]
+Round  35, Average loss 0.019, Test loss 0.023, Test accuracy: 64.87
+Round 36, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [1 2 5 3 6 7 4 0 8 9]
+Round  36, Average loss 0.021, Test loss 0.023, Test accuracy: 65.08
+Round 37, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [9 4 7 6 1 8 5 2 3 0]
+Round  37, Average loss 0.014, Test loss 0.023, Test accuracy: 64.96
+Round 38, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [7 5 2 1 4 6 9 8 3 0]
+Round  38, Average loss 0.013, Test loss 0.024, Test accuracy: 65.04
+Round 39, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [9 6 3 0 7 2 5 1 8 4]
+Round  39, Average loss 0.012, Test loss 0.024, Test accuracy: 64.76
+Round 40, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [6 1 3 9 8 4 5 2 0 7]
+Round  40, Average loss 0.011, Test loss 0.024, Test accuracy: 64.67
+Round 41, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [2 3 7 5 8 4 0 9 6 1]
+Round  41, Average loss 0.012, Test loss 0.024, Test accuracy: 64.50
+Round 42, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [1 5 3 9 0 4 7 8 6 2]
+Round  42, Average loss 0.008, Test loss 0.025, Test accuracy: 64.53
+Round 43, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [7 8 2 9 3 1 5 6 0 4]
+Round  43, Average loss 0.009, Test loss 0.025, Test accuracy: 64.60
+Round 44, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [6 8 1 9 5 0 3 4 7 2]
+Round  44, Average loss 0.007, Test loss 0.025, Test accuracy: 64.60
+Round 45, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [9 7 2 8 0 3 6 5 4 1]
+Round  45, Average loss 0.007, Test loss 0.025, Test accuracy: 64.79
+Round 46, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [2 1 9 8 4 3 0 6 7 5]
+Round  46, Average loss 0.006, Test loss 0.025, Test accuracy: 64.60
+Round 47, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [2 5 8 4 7 3 1 6 0 9]
+Round  47, Average loss 0.006, Test loss 0.025, Test accuracy: 64.56
+Round 48, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [8 4 3 7 5 1 6 0 2 9]
+Round  48, Average loss 0.005, Test loss 0.026, Test accuracy: 64.41
+Round 49, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [4 1 6 2 3 7 8 5 0 9]
+Round  49, Average loss 0.005, Test loss 0.026, Test accuracy: 64.33
+Round 50, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [9 2 6 0 5 1 8 7 4 3]
+Round  50, Average loss 0.005, Test loss 0.026, Test accuracy: 64.45
+Round 51, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [2 0 9 8 6 3 1 5 7 4]
+Round  51, Average loss 0.004, Test loss 0.026, Test accuracy: 64.27
+Round 52, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [1 9 2 7 8 4 5 0 3 6]
+Round  52, Average loss 0.004, Test loss 0.026, Test accuracy: 64.49
+Round 53, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [7 5 9 4 6 2 1 3 0 8]
+Round  53, Average loss 0.004, Test loss 0.026, Test accuracy: 64.44
+Round 54, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [9 2 7 5 0 1 4 3 6 8]
+Round  54, Average loss 0.004, Test loss 0.026, Test accuracy: 64.46
+Round 55, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [2 9 1 7 8 3 0 5 6 4]
+Round  55, Average loss 0.004, Test loss 0.026, Test accuracy: 64.62
+Round 56, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [1 2 4 7 0 5 3 6 8 9]
+Round  56, Average loss 0.009, Test loss 0.027, Test accuracy: 64.23
+Round 57, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [9 6 3 8 2 0 4 5 1 7]
+Round  57, Average loss 0.004, Test loss 0.027, Test accuracy: 64.42
+Round 58, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [8 4 0 3 7 2 6 1 5 9]
+Round  58, Average loss 0.003, Test loss 0.027, Test accuracy: 64.53
+Round 59, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [1 9 0 4 8 5 6 3 2 7]
+Round  59, Average loss 0.003, Test loss 0.027, Test accuracy: 64.44
+Round 60, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [4 2 3 0 1 7 9 6 5 8]
+Round  60, Average loss 0.003, Test loss 0.027, Test accuracy: 64.60
+Round 61, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [1 3 6 5 9 2 7 4 8 0]
+Round  61, Average loss 0.003, Test loss 0.027, Test accuracy: 64.37
+Round 62, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [2 8 9 6 3 4 1 5 7 0]
+Round  62, Average loss 0.003, Test loss 0.027, Test accuracy: 64.34
+Round 63, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [4 3 5 8 7 0 2 1 6 9]
+Round  63, Average loss 0.003, Test loss 0.027, Test accuracy: 64.34
+Round 64, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [6 7 3 9 2 5 4 0 1 8]
+Round  64, Average loss 0.003, Test loss 0.027, Test accuracy: 64.33
+Round 65, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [6 1 8 9 5 4 0 2 3 7]
+Round  65, Average loss 0.003, Test loss 0.027, Test accuracy: 64.41
+Round 66, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [2 9 8 6 7 5 4 3 1 0]
+Round  66, Average loss 0.003, Test loss 0.027, Test accuracy: 64.41
+Round 67, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [8 9 7 0 4 5 6 2 3 1]
+Round  67, Average loss 0.002, Test loss 0.027, Test accuracy: 64.25
+Round 68, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [3 9 7 8 4 0 5 2 6 1]
+Round  68, Average loss 0.002, Test loss 0.027, Test accuracy: 64.28
+Round 69, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [4 8 2 9 6 0 7 5 1 3]
+Round  69, Average loss 0.003, Test loss 0.027, Test accuracy: 64.49
+Round 70, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [8 9 0 7 2 1 6 5 3 4]
+Round  70, Average loss 0.002, Test loss 0.028, Test accuracy: 64.24
+Round 71, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [7 8 3 2 9 0 1 4 5 6]
+Round  71, Average loss 0.002, Test loss 0.028, Test accuracy: 64.28
+Round 72, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [9 1 4 0 2 3 6 5 7 8]
+Round  72, Average loss 0.002, Test loss 0.027, Test accuracy: 64.35
+Round 73, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [1 9 4 6 5 0 2 7 8 3]
+Round  73, Average loss 0.002, Test loss 0.028, Test accuracy: 64.28
+Round 74, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [9 2 1 3 0 8 5 6 7 4]
+Round  74, Average loss 0.002, Test loss 0.028, Test accuracy: 64.21
+Round 75, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [2 9 4 1 6 8 0 5 7 3]
+Round  75, Average loss 0.002, Test loss 0.028, Test accuracy: 64.29
+Round 76, lr: 0.010000, momentum:0.9, weight decay:1e-05, idx_users: [0 6 7 8 2 1 9 5 4 3]
+Round  76, Average loss 0.002, Test loss 0.028, Test accuracy: 64.36
+Round 77, lr: 0.001000, momentum:0.9, weight decay:1e-05, idx_users: [9 2 6 8 3 0 7 1 4 5]
+Round  77, Average loss 0.003, Test loss 0.028, Test accuracy: 64.37
+Round 78, lr: 0.001000, momentum:0.9, weight decay:1e-05, idx_users: [3 8 2 0 7 5 9 6 4 1]
+Round  78, Average loss 0.003, Test loss 0.028, Test accuracy: 64.42
+Round 79, lr: 0.001000, momentum:0.9, weight decay:1e-05, idx_users: [5 1 2 7 8 0 3 9 6 4]
+Round  79, Average loss 0.003, Test loss 0.028, Test accuracy: 64.38
+Round 80, lr: 0.001000, momentum:0.9, weight decay:1e-05, idx_users: [1 8 7 4 6 3 2 9 0 5]
+Round  80, Average loss 0.003, Test loss 0.028, Test accuracy: 64.37
+Round 81, lr: 0.001000, momentum:0.9, weight decay:1e-05, idx_users: [8 1 6 0 7 4 9 2 5 3]
+Round  81, Average loss 0.003, Test loss 0.028, Test accuracy: 64.41
+Round 82, lr: 0.001000, momentum:0.9, weight decay:1e-05, idx_users: [6 1 9 0 8 7 2 4 5 3]
+Round  82, Average loss 0.003, Test loss 0.028, Test accuracy: 64.37
+Round 83, lr: 0.001000, momentum:0.9, weight decay:1e-05, idx_users: [3 7 2 4 6 1 5 0 9 8]
+Round  83, Average loss 0.003, Test loss 0.028, Test accuracy: 64.36
+Round 84, lr: 0.001000, momentum:0.9, weight decay:1e-05, idx_users: [3 1 8 7 2 6 9 4 5 0]
+Round  84, Average loss 0.003, Test loss 0.028, Test accuracy: 64.36
+Round 85, lr: 0.001000, momentum:0.9, weight decay:1e-05, idx_users: [8 0 2 1 6 3 7 9 5 4]
+Round  85, Average loss 0.003, Test loss 0.028, Test accuracy: 64.32
+Round 86, lr: 0.001000, momentum:0.9, weight decay:1e-05, idx_users: [2 6 4 9 3 8 0 5 7 1]
+Round  86, Average loss 0.003, Test loss 0.028, Test accuracy: 64.40
+Round 87, lr: 0.001000, momentum:0.9, weight decay:1e-05, idx_users: [5 7 0 9 8 3 6 4 2 1]
+Round  87, Average loss 0.003, Test loss 0.028, Test accuracy: 64.34
+Round 88, lr: 0.001000, momentum:0.9, weight decay:1e-05, idx_users: [0 2 7 4 1 5 8 3 9 6]
+Round  88, Average loss 0.003, Test loss 0.028, Test accuracy: 64.38
+Round 89, lr: 0.001000, momentum:0.9, weight decay:1e-05, idx_users: [3 9 7 6 8 5 0 2 1 4]
+Round  89, Average loss 0.003, Test loss 0.028, Test accuracy: 64.42
+Round 90, lr: 0.001000, momentum:0.9, weight decay:1e-05, idx_users: [9 8 2 0 1 5 4 7 6 3]
+Round  90, Average loss 0.003, Test loss 0.028, Test accuracy: 64.34
+Round 91, lr: 0.001000, momentum:0.9, weight decay:1e-05, idx_users: [0 4 6 9 8 1 7 2 3 5]
+Round  91, Average loss 0.003, Test loss 0.028, Test accuracy: 64.36
+Round 92, lr: 0.001000, momentum:0.9, weight decay:1e-05, idx_users: [5 6 4 1 3 8 2 0 7 9]
+Round  92, Average loss 0.003, Test loss 0.028, Test accuracy: 64.32
+Round 93, lr: 0.001000, momentum:0.9, weight decay:1e-05, idx_users: [3 1 0 2 9 6 4 5 7 8]
+Round  93, Average loss 0.003, Test loss 0.028, Test accuracy: 64.34
+Round 94, lr: 0.001000, momentum:0.9, weight decay:1e-05, idx_users: [0 7 3 6 2 4 1 9 8 5]
+Round  94, Average loss 0.003, Test loss 0.028, Test accuracy: 64.35
+Round 95, lr: 0.001000, momentum:0.9, weight decay:1e-05, idx_users: [1 2 0 3 9 5 8 7 6 4]
+Round  95, Average loss 0.003, Test loss 0.028, Test accuracy: 64.31
+Round 96, lr: 0.001000, momentum:0.9, weight decay:1e-05, idx_users: [2 9 1 4 3 6 8 7 5 0]
+Round  96, Average loss 0.003, Test loss 0.028, Test accuracy: 64.27
+Round 97, lr: 0.001000, momentum:0.9, weight decay:1e-05, idx_users: [4 7 0 9 2 6 3 1 5 8]
+Round  97, Average loss 0.003, Test loss 0.028, Test accuracy: 64.33
+Round 98, lr: 0.001000, momentum:0.9, weight decay:1e-05, idx_users: [3 1 7 2 6 9 4 8 5 0]
+Round  98, Average loss 0.003, Test loss 0.028, Test accuracy: 64.34
+Round 99, lr: 0.001000, momentum:0.9, weight decay:1e-05, idx_users: [7 6 3 8 5 2 1 0 9 4]
+Round  99, Average loss 0.003, Test loss 0.028, Test accuracy: 64.35
+Round 100, lr: 0.001000, momentum:0.9, weight decay:1e-05, idx_users: [7 2 3 0 1 9 4 8 6 5]
+Round 100, Average loss 0.003, Test loss 0.028, Test accuracy: 64.29

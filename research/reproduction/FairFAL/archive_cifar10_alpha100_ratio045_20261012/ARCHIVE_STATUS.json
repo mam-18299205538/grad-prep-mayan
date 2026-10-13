@@ -1,0 +1,37 @@
+{
+  "run_id": "fairfal_cifar10_lt_rho045_alpha100_full_ca14e07_20261012T152854",
+  "remote_bundle": "/root/autodl-tmp/results/fairfal_cifar10_lt_rho045_alpha100_full_ca14e07_20261012T152854/alpha100_ratio045_verified_bundle_20261012T162808.tar.gz",
+  "remote_bundle_size_bytes": 2217349,
+  "remote_acceptance_manifest": "/root/autodl-tmp/logs/fairfal_cifar10_lt_rho045_alpha100_full_ca14e07_20261012T152854/acceptance_ratio045_20261012T161836.txt",
+  "remote_sha256_manifest": "/root/autodl-tmp/logs/fairfal_cifar10_lt_rho045_alpha100_full_ca14e07_20261012T152854/SHA256_ratio045_20261012T161836.txt",
+  "local_file_search": "按确切文件名检查Windows Downloads、Desktop、Documents、fuxian和work目录，未发现bundle",
+  "user_provided_target_instance": "z5ldwxgsn2-aad514f7",
+  "last_remote_observation": "2026-10-12T16:55:32+08:00；历史看板记录实例kw79e2gzyr-bbdf8b83；不与用户本轮提供的实例名混同",
+  "observed_at": "2026-10-12T16:37:01+08:00",
+  "remote_bundle_sha256": "66a5c60e196635611fa278a733309d28d66b34023031230a09527403dfd1b3df",
+  "local_bundle_sha256": "66A5C60E196635611FA278A733309D28D66B34023031230A09527403DFD1B3DF",
+  "local_bundle_path": "E:\\Tencent Files\\github\\mayan\\fuxian\\10111\\archive_cifar10_alpha100_ratio045_20261012\\alpha100_ratio045_verified_bundle_20261012T162808.tar.gz",
+  "local_bundle_size_bytes": 2217349,
+  "local_transfer_status": "verified_local_bundle_and_contents; source acceptance aggregate flag discrepancy disclosed",
+  "latest_local_check_at": "2026-10-12T19:16:04+08:00",
+  "last_transfer_attempt_at": "2026-10-12T19:04:50+08:00",
+  "browser_access_state": "已在登录态 JupyterLab 只读访问；从实例 z5ldwxgsn2-aad514f7 下载bundle并读取远端SHA256；未读取或改动训练状态。",
+  "target_instance_verified": true,
+  "user_reported_state": "Jupyter访问可用；目标z5ldwxgsn2-aad514f7通过终端主机标识核对（仅归档访问范围）。",
+  "note": "45% bundle已本地落盘，bundle SHA与远端相同，内嵌10项CSV/checkpoint逐文件manifest全部匹配。源验收文件的seeds=1..5=FAIL/OVERALL=FAIL与run_manifest及逐seed证据不一致，原始源文件保留并在本地复核说明中披露。",
+  "last_archive_remote_observation": {
+    "observed_at": "2026-10-12T19:13:52+08:00",
+    "instance": "z5ldwxgsn2-aad514f7",
+    "scope": "bundle存在、大小及SHA256；非GPU/训练状态核验"
+  },
+  "verification": {
+    "verified_at": "2026-10-12T19:16:04+08:00",
+    "bundle_sha256_match": true,
+    "manifest_files_expected": 10,
+    "manifest_files_matched": 10,
+    "extracted_file_count": 34,
+    "extracted_bytes": 2508815.0,
+    "seed_reaudit": "5/5 配置、101物理行CSV、Round0–99、last.pt、exit=0、错误扫描均通过",
+    "source_report_aggregate_flag": "OVERALL=FAIL, seeds=1..5=FAIL; 原因未证实，保留来源原件"
+  }
+}

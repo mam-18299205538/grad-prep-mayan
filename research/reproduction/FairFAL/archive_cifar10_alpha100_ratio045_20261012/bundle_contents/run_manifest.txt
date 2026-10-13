@@ -1,0 +1,7 @@
+run_id=fairfal_cifar10_lt_rho045_alpha100_full_ca14e07_20261012T152854
+ratio=0.45
+dd_beta=100
+seeds=1,2,3,4,5
+source_run=fairfal_cifar10_lt_rho040_alpha100_full_ca14e07_20261012T144829
+started_at=2026-10-12T15:28:54+08:00
+code_commit=ca14e07

@@ -1,0 +1,6 @@
+FairFAL CIFAR10-LT alpha=100 ratio=0.45
+TIME=2026-10-12T16:28:08.754021+08:00
+CSV_FIELD=acc_test; final row epoch=99 (Round 99)
+SEED1_5=64.70%, 64.34%, 64.81%, 64.29%, 64.51%
+MEAN=64.5300%
+SAMPLE_SD=0.2244 pp

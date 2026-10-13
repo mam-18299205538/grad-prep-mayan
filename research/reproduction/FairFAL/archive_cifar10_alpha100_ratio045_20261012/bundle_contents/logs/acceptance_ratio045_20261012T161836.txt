@@ -1,0 +1,62 @@
+FairFAL CIFAR10-LT alpha=100 ratio=0.45 acceptance
+TIME=2026-10-12T16:18:36.615976+08:00
+RUN=fairfal_cifar10_lt_rho045_alpha100_full_ca14e07_20261012T152854
+REMOTE_MANIFEST=/root/autodl-tmp/results/fairfal_cifar10_lt_rho045_alpha100_full_ca14e07_20261012T152854/run_manifest.txt
+SHA256=/root/autodl-tmp/logs/fairfal_cifar10_lt_rho045_alpha100_full_ca14e07_20261012T152854/SHA256_ratio045_20261012T161836.txt
+CHECKS:
+run_id=PASS
+ratio=0.45=PASS
+dd_beta=100=PASS
+seeds=1..5=FAIL
+code_commit=ca14e07=PASS
+seed1_CSV_101_rows=PASS
+seed1_rounds_0_99=PASS
+seed1_last_pt_nonempty=PASS
+seed1_exit_0=PASS
+seed1_errors_0=PASS
+seed1_command_ratio=PASS
+seed2_CSV_101_rows=PASS
+seed2_rounds_0_99=PASS
+seed2_last_pt_nonempty=PASS
+seed2_exit_0=PASS
+seed2_errors_0=PASS
+seed2_command_ratio=PASS
+seed3_CSV_101_rows=PASS
+seed3_rounds_0_99=PASS
+seed3_last_pt_nonempty=PASS
+seed3_exit_0=PASS
+seed3_errors_0=PASS
+seed3_command_ratio=PASS
+seed4_CSV_101_rows=PASS
+seed4_rounds_0_99=PASS
+seed4_last_pt_nonempty=PASS
+seed4_exit_0=PASS
+seed4_errors_0=PASS
+seed4_command_ratio=PASS
+seed5_CSV_101_rows=PASS
+seed5_rounds_0_99=PASS
+seed5_last_pt_nonempty=PASS
+seed5_exit_0=PASS
+seed5_errors_0=PASS
+seed5_command_ratio=PASS
+SHA256_10_files=PASS
+SEEDS:
+seed1: rows=101; rounds_0_99=True; last.pt=473110 bytes; exit_status=0; errors=0; final_csv_accuracy=NA
+seed2: rows=101; rounds_0_99=True; last.pt=473110 bytes; exit_status=0; errors=0; final_csv_accuracy=NA
+seed3: rows=101; rounds_0_99=True; last.pt=473110 bytes; exit_status=0; errors=0; final_csv_accuracy=NA
+seed4: rows=101; rounds_0_99=True; last.pt=473110 bytes; exit_status=0; errors=0; final_csv_accuracy=NA
+seed5: rows=101; rounds_0_99=True; last.pt=473110 bytes; exit_status=0; errors=0; final_csv_accuracy=NA
+OVERALL=FAIL
+SHA256_CHECK_OUTPUT=/root/autodl-tmp/results/fairfal_cifar10_lt_rho045_alpha100_full_ca14e07_20261012T152854/seed1/save/fedavg/cifar10_lt_0.05/cnn4conv_num10_C1.0_r100_le5_rquery0.050/dir_balance_100.0/seed1/reset_random/qmode_global/fairfal/label_ratio0.450/results.csv: OK
+/root/autodl-tmp/results/fairfal_cifar10_lt_rho045_alpha100_full_ca14e07_20261012T152854/seed1/save/fedavg/cifar10_lt_0.05/cnn4conv_num10_C1.0_r100_le5_rquery0.050/dir_balance_100.0/seed1/reset_random/qmode_global/fairfal/label_ratio0.450/last.pt: OK
+/root/autodl-tmp/results/fairfal_cifar10_lt_rho045_alpha100_full_ca14e07_20261012T152854/seed2/save/fedavg/cifar10_lt_0.05/cnn4conv_num10_C1.0_r100_le5_rquery0.050/dir_balance_100.0/seed2/reset_random/qmode_global/fairfal/label_ratio0.450/results.csv: OK
+/root/autodl-tmp/results/fairfal_cifar10_lt_rho045_alpha100_full_ca14e07_20261012T152854/seed2/save/fedavg/cifar10_lt_0.05/cnn4conv_num10_C1.0_r100_le5_rquery0.050/dir_balance_100.0/seed2/reset_random/qmode_global/fairfal/label_ratio0.450/last.pt: OK
+/root/autodl-tmp/results/fairfal_cifar10_lt_rho045_alpha100_full_ca14e07_20261012T152854/seed3/save/fedavg/cifar10_lt_0.05/cnn4conv_num10_C1.0_r100_le5_rquery0.050/dir_balance_100.0/seed3/reset_random/qmode_global/fairfal/label_ratio0.450/results.csv: OK
+/root/autodl-tmp/results/fairfal_cifar10_lt_rho045_alpha100_full_ca14e07_20261012T152854/seed3/save/fedavg/cifar10_lt_0.05/cnn4conv_num10_C1.0_r100_le5_rquery0.050/dir_balance_100.0/seed3/reset_random/qmode_global/fairfal/label_ratio0.450/last.pt: OK
+/root/autodl-tmp/results/fairfal_cifar10_lt_rho045_alpha100_full_ca14e07_20261012T152854/seed4/save/fedavg/cifar10_lt_0.05/cnn4conv_num10_C1.0_r100_le5_rquery0.050/dir_balance_100.0/seed4/reset_random/qmode_global/fairfal/label_ratio0.450/results.csv: OK
+/root/autodl-tmp/results/fairfal_cifar10_lt_rho045_alpha100_full_ca14e07_20261012T152854/seed4/save/fedavg/cifar10_lt_0.05/cnn4conv_num10_C1.0_r100_le5_rquery0.050/dir_balance_100.0/seed4/reset_random/qmode_global/fairfal/label_ratio0.450/last.pt: OK
+/root/autodl-tmp/results/fairfal_cifar10_lt_rho045_alpha100_full_ca14e07_20261012T152854/seed5/save/fedavg/cifar10_lt_0.05/cnn4conv_num10_C1.0_r100_le5_rquery0.050/dir_balance_100.0/seed5/reset_random/qmode_global/fairfal/label_ratio0.450/results.csv: OK
+/root/autodl-tmp/results/fairfal_cifar10_lt_rho045_alpha100_full_ca14e07_20261012T152854/seed5/save/fedavg/cifar10_lt_0.05/cnn4conv_num10_C1.0_r100_le5_rquery0.050/dir_balance_100.0/seed5/reset_random/qmode_global/fairfal/label_ratio0.450/last.pt: OK 
+
+METRIC_FOLLOWUP=/root/autodl-tmp/logs/fairfal_cifar10_lt_rho045_alpha100_full_ca14e07_20261012T152854/final_metrics_ratio045_20261012T162808.txt
+R99_CSV_acc_test=64.70%, 64.34%, 64.81%, 64.29%, 64.51%; mean=64.5300%; sample_sd=0.2244 pp; verified_at=2026-10-12T16:28:08.754021+08:00
